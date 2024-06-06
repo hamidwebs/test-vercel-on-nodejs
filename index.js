@@ -1,6 +1,7 @@
 const express = require('express')
 const connectToMongoDB = require('./Helper/db')
 const routes = require('./Routes/index')
+const { injectSpeedInsights } = require('@vercel/speed-insights')
 
 const app = express()
 const port = 1881
@@ -17,3 +18,5 @@ app.listen(port, async () => {
     await connectToMongoDB()
     console.log(`Visit on URL http://localhost:${port}`)
 })
+
+injectSpeedInsights()
